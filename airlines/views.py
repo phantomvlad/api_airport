@@ -2,15 +2,16 @@ from rest_framework import viewsets, status
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
-from .models import Aircraft
-from .serializers import AircraftSerializer
+from .models import Airlines
+from .serializers import AirlinesSerializer
 from api.pagination import CustomLimitOffsetPagination
-class AircraftViewSet(viewsets.ModelViewSet):
-    serializer_class = AircraftSerializer
+
+class AirlinesViewSet(viewsets.ModelViewSet):
+    serializer_class = AirlinesSerializer
     pagination_class = CustomLimitOffsetPagination
 
     def get_queryset(self):
-        return Aircraft.objects.all()
+        return Airlines.objects.all()
 
     def list(self, request):
         if 'limit' not in request.GET or 'offset' not in request.GET:
@@ -24,7 +25,7 @@ class AircraftViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         serializer = self.get_serializer(data=request.data)
-        if serializer.is_valid():
+        if serializer is not None and serializer.is_valid():
             instance = serializer.save()
             return Response({"uuid": instance.uuid}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -46,5 +47,4 @@ class AircraftViewSet(viewsets.ModelViewSet):
         aircraft = get_object_or_404(self.queryset, uuid=pk)
         aircraft.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
 

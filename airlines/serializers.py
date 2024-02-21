@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
-from api.serializers import AirObjectsSerializer
 from api.validators import name_validate
-from .models import Aircraft
+from .models import Airlines
+from api.serializers import AirObjectsSerializer
 
-class AircraftSerializer(AirObjectsSerializer):
+class AirlinesSerializer(AirObjectsSerializer):
     airlines_name = serializers.CharField(validators=[name_validate], required=False)
     class Meta:
-        model = Aircraft
+        model = Airlines
         fields = '__all__'

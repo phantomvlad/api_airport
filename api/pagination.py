@@ -34,7 +34,7 @@ class CustomLimitOffsetPagination(LimitOffsetPagination):
 
     def get_previous_link(self):
         if self.offset <= 0:
-            return None
+            return ''
         previous_offset = max(0, self.offset - self.limit)
 
         return self.request.build_absolute_uri(f"?limit={self.limit}&offset={previous_offset}")

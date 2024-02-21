@@ -1,13 +1,10 @@
 from django.contrib import admin
-from django.urls import path
-from rest_framework import routers
-from aircrafts.views import AircraftViewSet
-
-router = routers.SimpleRouter(trailing_slash=False)
-router.register(r'aircrafts', AircraftViewSet, basename='aircrafts')
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+	path('aircrafts', include('aircrafts.urls')),
+	path('airlines', include('airlines.urls')),
 ]
 
-urlpatterns += router.urls
+
