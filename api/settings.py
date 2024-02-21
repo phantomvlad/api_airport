@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'aircrafts',
     'airlines',
     'airports',
+    'flights',
 ]
 
 MIDDLEWARE = [

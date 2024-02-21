@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from airobjects.serializers import AirObjectsSerializer
-from api.validators import name_validate
+from airobjects.validators import name_validate
 from .models import Aircraft
 
 class AircraftSerializer(AirObjectsSerializer):

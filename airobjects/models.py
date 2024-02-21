@@ -9,9 +9,9 @@ class AirObject(models.Model):
         default = uuid.uuid4,
         editable = False
     )
-    icao_code = models.CharField('ИКАО код авиакомпании', blank=False, null=False)
-    iata_code = models.CharField('ИАТА код авиакомпании', blank=False, null=False)
-    extra_info = models.TextField('Дополнительная информация в свободной форме', null=True, blank=False)
+    icao_code = models.CharField('ИКАО код авиакомпании')
+    iata_code = models.CharField('ИАТА код авиакомпании')
+    extra_info = models.TextField('Дополнительная информация в свободной форме', null=True)
 
     def __str__(self):
         return f'{self.name} {self.uuid}'

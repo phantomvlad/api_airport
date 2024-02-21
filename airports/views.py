@@ -2,16 +2,16 @@ from rest_framework import viewsets, status
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
-from .models import Airports
+from .models import Airport
 from .serializers import AirportsSerializer
-from api.pagination import CustomLimitOffsetPagination
+from airobjects.pagination import CustomLimitOffsetPagination
 
 class AirportsViewSet(viewsets.ModelViewSet):
     serializer_class = AirportsSerializer
     pagination_class = CustomLimitOffsetPagination
 
     def get_queryset(self):
-        return Airports.objects.all()
+        return Airport.objects.all()
 
     def list(self, request):
         if 'limit' not in request.GET \

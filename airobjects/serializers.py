@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from api.validators import icao_validate, iata_validate, name_validate
+from airobjects.validators import icao_validate, iata_validate
+
 
 # Общий сериалайзер сделан для масштабирования различных объектов (добавление разичных полей в модели)
 class AirObjectsSerializer(serializers.ModelSerializer):

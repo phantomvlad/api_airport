@@ -4,7 +4,8 @@ from rest_framework.response import Response
 
 from .models import Aircraft
 from .serializers import AircraftSerializer
-from api.pagination import CustomLimitOffsetPagination
+from airobjects.pagination import CustomLimitOffsetPagination
+
 class AircraftViewSet(viewsets.ModelViewSet):
     serializer_class = AircraftSerializer
     pagination_class = CustomLimitOffsetPagination
